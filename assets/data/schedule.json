@@ -1,0 +1,56 @@
+{
+  "hours": [
+    "9:30 - 11:00",
+    "10:00 - 12:00",
+    "16:30 - 18:00",
+    "17:00 - 18:00",
+    "18:15 - 19:15",
+    "18:15 - 19:30",
+    "19:30 - 21:00"
+  ],
+  "days": [
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado"
+  ],
+  "schedule": {
+    "Lunes": {
+      "9:30 - 11:00": "BJJ Adultos",
+      "16:30 - 18:00": "MMA",
+      "17:00 - 18:00": "BJJ Infantil",
+      "18:15 - 19:15": "BJJ Juveniles",
+      "19:30 - 21:00": "BJJ Adultos"
+    },
+    "Martes": {
+      "9:30 - 11:00": "BJJ Adultos",
+      "17:00 - 18:00": "BJJ Juveniles",
+      "18:15 - 19:30": "BJJ Adultos",
+      "19:30 - 21:00": "MMA"
+    },
+    "Miércoles": {
+      "9:30 - 11:00": "BJJ Adultos",
+      "16:30 - 18:00": "MMA",
+      "17:00 - 18:00": "BJJ Infantil",
+      "18:15 - 19:15": "BJJ Juveniles",
+      "19:30 - 21:00": "BJJ Adultos"
+    },
+    "Jueves": {
+      "9:30 - 11:00": "BJJ Adultos",
+      "17:00 - 18:00": "BJJ Juveniles",
+      "18:15 - 19:30": "BJJ Adultos",
+      "19:30 - 21:00": "MMA"
+    },
+    "Viernes": {
+      "9:30 - 11:00": "BJJ Adultos",
+      "17:00 - 18:00": "BJJ Adultos",
+      "18:00 - 19:00": "Open matt",
+      "18:30 - 19:00": "MMA"
+    },
+    "Sábado": {
+      "10:00 - 12:00": "Open matt"
+    }
+  }
+}
