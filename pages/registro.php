@@ -11,7 +11,7 @@ include __DIR__ . '/../includes/header.php';
                     Registro
                 </h1>
 
-                <form action="../.." class="form" method="POST">
+                <form action="../.." class="form" method="POST" enctype="multipart/form-data">
                     <div class="camp">
                         <label for="userName">Nombre:</label>
                         <input type="text" name="userName" id="userName" placeholder="Indica tu nombre">
@@ -28,6 +28,11 @@ include __DIR__ . '/../includes/header.php';
                         <small></small>
                     </div>
                     <div class="camp">
+                        <label for="userPassword">Contraseña:</label>
+                        <input type="password" name="userPassword" id="userPassword" placeholder="indica tu contraseña">
+                        <small></small>
+                    </div>
+                    <div class="camp">
                         <label for="userPhone">Teléfono:</label>
                         <input type="tel" name="userPhone" id="userPhone" placeholder="indica tu número de teléfono">
                         <small></small>
@@ -41,13 +46,18 @@ include __DIR__ . '/../includes/header.php';
                         <label for="userSex">Indica tu sexo</label>
                         <select name="userSex" id="userSex">
                             <option value="none"></option>
-                            <option value="Hombre">Hombre</option>
-                            <option value="mujer">Mujer</option>
+                            <option value="HOMBRE">Hombre</option>
+                            <option value="MUJER">Mujer</option>
                             <small></small>
                         </select>
                     </div>
                     <div class="camp">
-                        <label for="check1">padeces algun tipo de patología? (asma, epilepsia...)</label>
+                        <label for="profilePicture">Imagen de perfil</label>
+                        <input type="file" name="profilePicture" id="profilePicture">
+
+                    </div>
+                    <div class="camp">
+                        <label for="check1">¿Padeces algun tipo de patología relevante? (asma, epilepsia...)</label>
                         <input type="checkbox" name="deseases" id="check1">
                     </div>
                     <div class="camp hidden" id="patologies">
@@ -55,7 +65,7 @@ include __DIR__ . '/../includes/header.php';
                         <textarea name="deseasesTextarea" id="deseasesTextarea" placeholder="Indicanos que patologia padeces"></textarea>
                     </div>
                     <div class="camp">
-                        <label for="check2">Quieres añadir una persona de contacto? (Podrás hacerlo más tarde)</label>
+                        <label for="check2">¿Quieres añadir una persona de contacto? (Podrás hacerlo más tarde)</label>
                         <input type="checkbox" id="check2" name="check2">
                     </div>
                     <hr class="hrform hidden" id="hrform">
@@ -77,7 +87,7 @@ include __DIR__ . '/../includes/header.php';
                         
                     </div>
                     <div class="camp">
-                        <label for="conditions">He leído y acepto los <a id="termsModal">términos y condiciones</a></label>
+                        <label for="conditions">He leído y acepto los <a id="termsModal" class="termsModal">términos y condiciones</a></label>
                         <input type="checkbox" name="conditions" id="conditions">
                         <small></small>
                     </div>
@@ -103,8 +113,8 @@ include __DIR__ . '/../includes/header.php';
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </div>
 
-    <script src="../js/hamburguesa.js"></script>
-    <script src="../js/form.js"></script>
-    <script src="../js/terms.js"></script>
+    <script src="/assets/js/hamburguesa.js"></script>
+    <script src="/assets//js/form.js"></script>
+    <script src="/assets//js/terms.js"></script>
 </body>
 </html>

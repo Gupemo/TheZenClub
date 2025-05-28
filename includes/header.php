@@ -30,8 +30,8 @@ if (!isset($keywords)) {
     <meta name="description" content="<?= htmlspecialchars($description)?>">
     <title><?= htmlspecialchars($title)?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/normalize.css">
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/styles/styles.css">
 
 </head>
 <body>

@@ -7,7 +7,7 @@
         <div class="footer__contact">
             <h3>Contacto</h3>
             <p>Email: contacto@thezenclub.com</p>
-            <p>Teléfono: <a href="https://wa.me/34123456789" target="_blank" rel="noopener" class="footer__whatsapp-link">+34 123 456 789</a></p>
+            <p>Teléfono: <a href="https://wa.me/34123456789" target="_blank" rel="noopener" class="footer__whatsapp-link">+34 695 365 771</a></p>
             
             <div class="footer__socials">
                 <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>

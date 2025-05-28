@@ -342,6 +342,10 @@ input[type="checkbox"] {
     animation-name: animarsuperior;
     animation-duration: 0.5s
 }
+.termsModal{
+    cursor: pointer;
+    font-weight: bolder;
+}
 
 
 @keyframes animarsuperior {
@@ -393,6 +397,26 @@ input[type="checkbox"] {
 .schedule-table tbody tr:nth-child(even) {
     background-color: rgba(240, 240, 240, 0.8);
 }
+@media (max-width: 768px) {
+    .schedule-table {
+        overflow-x: auto;
+        width: 100%;
+        display: block;
+    }
+
+    .schedule-table table {
+        width: 100%;
+        min-width: 600px; /* para que no se rompa el diseño */
+        font-size: 1.2rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 0.4rem 0.6rem;
+        font-size: 1.2rem;
+    }
+}
+
 
 
 @media (max-width: 768px) {
@@ -435,7 +459,6 @@ input[type="checkbox"] {
 
 
 /* Footer */
-/* Footer */
 .footer {
     grid-area: footer;
     background-color: var(--gris);
@@ -445,7 +468,6 @@ input[type="checkbox"] {
     font-size: 1.4rem;
 }
 
-/* Contenedor principal con flexbox */
 .footer__container {
     display: flex;
     flex-wrap: wrap;
@@ -455,7 +477,6 @@ input[type="checkbox"] {
     gap: 30px;
 }
 
-/* Sección “Acerca de” */
 .footer__about {
     flex: 1 1 300px;
     min-width: 280px;
@@ -486,17 +507,13 @@ input[type="checkbox"] {
 }
 
 /* Estilo para el número, que tenga el color de whatsapp */
-.footer__contact a.footer__whatsapp-link {
+.footer__whatsapp-link {
     color: #25D366; 
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
-.footer__contact a.footer__whatsapp-link:hover {
-    color: #128C7E;
-    text-decoration: underline;
-}
 
 .footer__socials {
     margin-top: 15px;
@@ -511,7 +528,7 @@ input[type="checkbox"] {
 }
 
 .footer__socials a:hover {
-    color: #25D366; 
+    color: var(--azulClaro); 
     transform: scale(1.2);
     cursor: pointer;
 }
@@ -526,7 +543,6 @@ input[type="checkbox"] {
     margin-top: 40px;
 }
 
-/* Responsive para móviles */
 @media (max-width: 700px) {
     .footer__container {
         flex-direction: column;

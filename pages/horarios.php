@@ -29,10 +29,9 @@ include __DIR__ . '/../includes/header.php';
                 <div id="schedule-table" class="schedule-table"></div>
             </article>
         </main>
-
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </div>
-    <script src="../js/hamburguesa.js"></script>
-    <script src="../js/schedule.js"></script>
+    <script src="/assets/js/hamburguesa.js"></script>
+    <script src="/assets/js/schedule.js"></script>
 </body>
 </html>

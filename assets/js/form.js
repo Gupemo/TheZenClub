@@ -44,13 +44,15 @@ function check(){
     let userSubname = document.getElementById('userSubname');
     let userbirthDate = document.getElementById('userBirthDate');
     let userEmail = document.getElementById('userEmail')
+    let userPassword = document.getElementById('userPassword');
     let userPhone = document.getElementById('userPhone');
     let userSex = document.getElementById('userSex');
     let privacy = document.getElementById('conditions');
-    let userContactName = document.getElementById('contactName');
+
+/*     let userContactName = document.getElementById('contactName');
     let userContactSubname = document.getElementById('contactSubname');
     let userContactPhone = document.getElementById('contactPhone');
-    let userContactRelationship = document.getElementById('relationship');
+    let userContactRelationship = document.getElementById('relationship'); */
 
     // empezando a hacer los checks
     let correct = true
@@ -112,6 +114,12 @@ function check(){
             success(userEmail);
         }
     }
+    
+    if(userPassword.value == null || userPassword.value == ''){
+        error(userPassword, "Debes escribir una contraseña");
+    }else{
+        success(userPassword);
+    }
 
     if(userSex.value == ''){
         error(userSex, "Debes elegir tu sexo");
@@ -121,7 +129,7 @@ function check(){
     }
 
     if(!privacy.checked){
-        error(privacy, 'No nos intentes pasar la guardia, debes aceptar los términos y condiciones!')
+        error(privacy, 'No nos intentes pasar la guardia... ¡Debes aceptar los términos y condiciones!')
         correct = false;
     }
 

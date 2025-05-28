@@ -15,5 +15,6 @@ include 'includes/header.php';
 <?php
 include 'includes/footer.php';
 ?>
+    <script src="/js/hamburguesa.js"></script>
 </body>
 </html>
