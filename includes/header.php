@@ -4,7 +4,9 @@ $menu = [
     '/index.php'            => 'Inicio',
     '/pages/registro.php'   => 'Registro',
     '/pages/nosotros.php'   => 'Sobre nosotros',
-    '/pages/horarios.php'   => 'Horarios'
+    '/pages/horarios.php'   => 'Horarios',
+    '/pages/galeria.php'    => 'Galeria',
+    '/pages/perfil.php'     => 'perfil'
 ];
 
 // variables para SEO
@@ -30,8 +32,10 @@ if (!isset($keywords)) {
     <meta name="description" content="<?= htmlspecialchars($description)?>">
     <title><?= htmlspecialchars($title)?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/styles/assets/normalize.css">
+    <link rel="stylesheet" href="/assets/styles/normalize.css">
     <link rel="stylesheet" href="/assets/styles/styles.css">
+    <link rel="manifest" href="/assets/data/manifest.json">
+    <link rel="icon" type="image/png" href="/assets/icons/logo.ico">
 
 </head>
 <body>

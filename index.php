@@ -8,6 +8,31 @@ include 'includes/header.php';
 
 <main class="main">
     <article class="articulo">
+        <div class="profile">
+            <img src="../assets/images/profile-picture.jpeg" alt="">
+            <div class="imagen-cinturon">
+                <img src="../assets/images/cinturon_morado.png" alt="">    
+            </div>
+        </div>
+        <div class="profile">
+            <img src="../assets/images/profile-picture.jpeg" alt="">
+            <div class="imagen-cinturon">
+                <img src="../assets/images/cinturon_morado.png" alt="">    
+            </div>
+        </div>
+        <div class="profile">
+            <img src="../assets/images/profile-picture.jpeg" alt="">
+            <div class="imagen-cinturon">
+                <img src="../assets/images/cinturon_morado.png" alt="">    
+            </div>
+        </div>
+        <div class="profile">
+            <img src="../assets/images/profile-picture.jpeg" alt="">
+            <div class="imagen-cinturon">
+                <img src="../assets/images/cinturon_morado.png" alt="">    
+            </div>
+        </div>
+
         
     </article>
 </main>
@@ -15,6 +40,6 @@ include 'includes/header.php';
 <?php
 include 'includes/footer.php';
 ?>
-    <script src="/js/hamburguesa.js"></script>
+    <script src="/assets/js/hamburguesa.js"></script>
 </body>
 </html>
