@@ -26,24 +26,10 @@
         include '../includes/navBar.php';
         ?>
         <main class="main">
-            <article class="articulo articulo__nosotros">
-                <div class="nosotros__contenido">
-                    <h2>Sobre nosotros</h2>
-
-                    <p>En <strong>The Zen Club</strong> entendemos el Jiu Jitsu como una herramienta de crecimiento personal. Nuestra enseñanza se basa en el respeto, la constancia y el control.</p>
-
-                    <p>Cada clase es una oportunidad para superarte, aprender a tu ritmo y formar parte de una comunidad donde se valora tanto la técnica como el compañerismo.</p>
-
-                    <p>El entrenamiento está abierto a todas las edades: también contamos con clases para niños y juveniles, donde aprenderán disciplina, respeto, defensa personal y los fundamentos de este arte marcial, todo en un entorno seguro, dinámico y divertido.</p>
-
-                    <p>No importa tu edad, condición física o experiencia previa: aquí entrenamos juntos, progresamos juntos y celebramos cada avance como un paso más hacia tu mejor versión.</p>
-
+            <article class="articulo">
+                <div class="noticias">
+                    Aquí saldrán las noticias cargadas desde base de datos.
                 </div>
-                <div class="inicio__imagen">
-                    <img src="/assets/images/NoFoto.png" alt="Imagen del dojo The Zen Club">
-                </div>
-
-
             </article>
         </main>
         <?php
