@@ -10,8 +10,8 @@
     <meta name="description" content="Escuela de artes marciales, especializada en Jiu Jitsu brasileño">
     <title>The Zen Club - Inicio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./assets/styles/normalize.css">
-    <link rel="stylesheet" href="./assets/styles/styles.css">
+    <link rel="stylesheet" href="../assets/styles/normalize.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
     <link rel="manifest" href="/assets/data/manifest.json">
     <link rel="icon" type="image/png" href="/assets/icons/logo.ico">
 
@@ -23,14 +23,12 @@
             <img src="/assets/logo.png" alt="Logo del club" class="header__logo">
         </header>
         <?php
-        include './includes/navBar.php';
+        include '../includes/navBar.php';
         ?>
         <main class="main">
-            <article class="articulo articulo--inicio">
-                <div class="inicio__contenido">
-                    <h2>Bienvenido a The Zen Club</h2>
-
-                    <p><em>Texto en desarrollo</em></p>
+            <article class="articulo articulo__nosotros">
+                <div class="nosotros__contenido">
+                    <h2>Sobre nosotros</h2>
 
                     <p>En <strong>The Zen Club</strong> entendemos el Jiu Jitsu como una herramienta de crecimiento personal. Nuestra enseñanza se basa en el respeto, la constancia y el control.</p>
 
@@ -39,15 +37,18 @@
                     <p>El entrenamiento está abierto a todas las edades: también contamos con clases para niños y juveniles, donde aprenderán disciplina, respeto, defensa personal y los fundamentos de este arte marcial, todo en un entorno seguro, dinámico y divertido.</p>
 
                     <p>No importa tu edad, condición física o experiencia previa: aquí entrenamos juntos, progresamos juntos y celebramos cada avance como un paso más hacia tu mejor versión.</p>
+
+                </div>
+                <div class="nosotros__imagen">
+                    <img src="../assets/images/dojo-tatami.jpeg" alt="Imagen de nuestras instalaciones">
+
                 </div>
 
-                <div class="inicio__imagen">
-                    <img src="/assets/images/NoFoto.png" alt="Imagen del dojo The Zen Club">
-                </div>
+
             </article>
         </main>
         <?php
-        include './includes/footer.php';
+        include '../includes/footer.php';
         ?>
 </body>
 
