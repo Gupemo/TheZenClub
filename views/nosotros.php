@@ -8,7 +8,7 @@
     <meta name="keywords"
         content="escuela, bjj, jiu jitsu, jiu jitsu brasileño, brazilian jiu jitsu, las palmas, academia artes marciales, artes marciales">
     <meta name="description" content="Escuela de artes marciales, especializada en Jiu Jitsu brasileño">
-    <title>The Zen Club - Inicio</title>
+    <title>The Zen Club - Sobre nosotros</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/styles/normalize.css">
     <link rel="stylesheet" href="../assets/styles/styles.css">
@@ -50,5 +50,6 @@
         include '../includes/footer.php';
         ?>
 </body>
+<script src="/assets/js/hamburguesa.js"></script>
 
 </html>

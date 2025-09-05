@@ -10,8 +10,9 @@ CREATE TABLE IF NOT EXISTS roles (
     PRIMARY KEY(id_rol)
 ) ENGINE = InnoDB;
 
+-- 1 user, 2 instructor, 3 profesor, 4 maestro
 INSERT INTO roles (nombre) VALUES
-    ('usuario'),
+    ('usuario'), 
     ('instructor'),
     ('profesor'),
     ('maestro');
@@ -27,26 +28,45 @@ CREATE TABLE IF NOT EXISTS users (
     user_sex ENUM('HOMBRE', 'MUJER'),
     user_picture VARCHAR(255) DEFAULT NULL,
     user_deseases VARCHAR(250),
-    rol_id INT DEFAULT 1,
+    rol_id INT DEFAULT 1 NULL,
     user_active BOOLEAN NOT NULL DEFAULT TRUE,
     fecha_alta DATE NOT NULL DEFAULT CURRENT_DATE,
     fecha_baja DATE DEFAULT NULL,
     user_password VARCHAR(255) NOT NULL,
-    es_profesor BOOLEAN DEFAULT FALSE,
-    tos_accepted BOOLEAN NOT NULL DEFAULT FALSE;
-    mostrar_profesor BOOLEAN DEFAULT FALSE,
+    tos_accepted BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY(user_id),
     FOREIGN KEY (rol_id) REFERENCES roles(id_rol)
         ON DELETE SET NULL
         ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
+-- Invitaciones para registro
+CREATE TABLE IF NOT EXISTS invitations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    token VARCHAR(64) NOT NULL UNIQUE,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    used BOOLEAN NOT NULL DEFAULT FALSE
+) ENGINE=InnoDB;
+
+-- Tabla de profesores (perfiles públicos)
+CREATE TABLE IF NOT EXISTS profesores (
+    profesor_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    bio TEXT,
+    especialidades VARCHAR(255),
+    logros TEXT,
+    visible BOOLEAN NOT NULL DEFAULT TRUE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+);
+
 -- Contactos de emergencia
 CREATE TABLE IF NOT EXISTS emergency_contacts (
     contact_id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     contact_name VARCHAR(100) NOT NULL,
-    contact_subname VARCHAR(200)
+    contact_subname VARCHAR(200),
     contact_phone VARCHAR(10) NOT NULL,
     relationship VARCHAR(50),
     PRIMARY KEY(contact_id),
@@ -153,9 +173,3 @@ CREATE TABLE IF NOT EXISTS user_health (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
         ON DELETE CASCADE
 ) ENGINE = InnoDB;
-
-    
-    
-
-
-    

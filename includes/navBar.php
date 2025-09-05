@@ -17,7 +17,8 @@ $menuDefault = [
     '/views/profesores.php'     => 'Profesores',
     '/views/horarios.php'       => 'Horarios',
     '/views/nosotros.php'       => 'Sobre nosotros',
-    '/views/noticias.php'       => 'Noticias'
+    '/views/noticias.php'       => 'Noticias',
+    '/views/login.php'          => 'Iniciar sesión'
 ];
 
 $menuUsuario = [
@@ -36,7 +37,7 @@ $menuProfesores = [
     '/views/nosotros.php'       => 'Sobre nosotros',
     'views/noticias.php'        => 'Noticias',
     '/views/perfil.php'         => 'perfil',
-    '/admin/panel_profesor'     => 'Panel de profesor',
+    '/admin/index.php'          => 'Panel de profesor',
     '/views/logout.php'         => 'Cerrar sesión'
 ];
 
@@ -47,7 +48,7 @@ $menuAdministracion = [
     '/views/nosotros.php'       => 'Sobre nosotros',
     'views/noticias.php'        => 'Noticias',
     '/views/perfil.php'         => 'perfil',
-    '/admin/admin_panel'        => 'Panel de administración',
+    '/admin/index.php'          => 'Panel de administración',
     '/views/logout.php'         => 'Cerrar sesión'
 ];
 
@@ -66,10 +67,11 @@ if (isset($_SESSION['usuario'])) {
             $menuActual = $menuProfesores;
             break;
         case 3:
+        case 4:
             $menuActual = $menuProfesores;
             break;
-        case 4:
-            $menuActual = $menuAdministracion;
+        default:
+            $menuActual = $menuUsuario;
             break;
     }
 }

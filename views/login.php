@@ -8,10 +8,10 @@
     <meta name="keywords"
         content="escuela, bjj, jiu jitsu, jiu jitsu brasileño, brazilian jiu jitsu, las palmas, academia artes marciales, artes marciales">
     <meta name="description" content="Escuela de artes marciales, especializada en Jiu Jitsu brasileño">
-    <title>The Zen Club - Nuestros profesores</title>
+    <title>The Zen Club - Iniciar sesión</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/styles/normalize.css">
-    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="stylesheet" href="/assets/styles/normalize.css">
+    <link rel="stylesheet" href="/assets/styles/styles.css">
     <link rel="manifest" href="/assets/data/manifest.json">
     <link rel="icon" type="image/png" href="/assets/icons/logo.ico">
 
@@ -26,11 +26,6 @@
         include '../includes/navBar.php';
         ?>
         <main class="main">
-            <article class="articulo">
-                <div class="profesores">
-                    Aqui saldrán las imagenes/perfiles de cada profesor autorizado.
-                </div>
-            </article>
         </main>
         <?php
         include '../includes/footer.php';
