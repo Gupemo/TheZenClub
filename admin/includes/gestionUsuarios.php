@@ -1,5 +1,5 @@
 <div class="lista-menu">
-    <h2>Menú usuarios</h2>
+    <h2>Gestión de usuarios</h2>
     <div class="menu-item-list">
         <div class="menu-item">
             <a href="/admin/pages/users.php?action=invitar" title="Invitar usuario">
@@ -7,8 +7,8 @@
             </a>
         </div>
         <div class="menu-item">
-            <a href="#" title="listar usuarios">
-                <img src="../../assets/icons/svg/list-users.svg" alt="Listar usuarios"> Listar usuarios
+            <a href="/admin/pages/users.php?action=listarInvitaciones" title="Gestionar Invitaciones">
+                <img src="../../assets/icons/svg/list-users.svg" alt="Listar usuarios">Invitaciones activas
             </a>
 
         </div>

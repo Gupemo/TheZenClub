@@ -31,6 +31,10 @@ switch ($accessLevel) {
 }*/
     ?>
 
+    <?php
+    require_once '../../config/debug.php';
+    ?>
+
 </head>
 
 <body>
@@ -41,7 +45,7 @@ switch ($accessLevel) {
         </header>
 
         <!-- Navbar -->
-        <nav class="navbar">
+       <nav class="navbar">
             <ul>
                 <li class="nav-link"><a href="../index.php">Inicio</a></li>
                 <li class="nav-link"><a href="#">Noticias</a></li>
@@ -64,13 +68,13 @@ switch ($accessLevel) {
             $action = $_GET['action'] ?? null;
             switch ($action) {
                 case 'invitar':
-                    include '../../includes/acp/invitarUsuario.php';
+                    include '../includes/invitarUsuarios.php';
                     break;
-                case 'listar':
-                    include '../../includes/acp/listarUsuarios.php';
+                case 'listarInvitaciones':
+                    include '../includes/listarInvitaciones.php';
                     break;
                 default:
-                    include '../../includes/acp/listarUsuarios.php';
+                    include '../includes/listarUsuarios.php';
                     break;
             }
             ?>

@@ -27,6 +27,12 @@ class ControllerInvites {
         // Crear invitación
         return DB::crearInvitacion($email, $token);
     }
+
+    public function listarInvitaciones() {
+        return DB::obtenerInvitaciones();
+        
+
+    }
 }
 
 ?>

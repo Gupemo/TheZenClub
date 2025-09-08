@@ -26,6 +26,24 @@
         include '../includes/navBar.php';
         ?>
         <main class="main">
+            <section class="section">
+                <form action="../MVC/core/router.php" method="POST">
+
+                    <div class="camp">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email">
+                    </div>
+                    <div class="camp">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="camp">
+                        <input type="reset" value="Borrar" class="boton">
+                        <input type="submit" value="Iniciar sesión" class="boton">
+                    </div>
+
+                </form>
+            </section>
         </main>
         <?php
         include '../includes/footer.php';

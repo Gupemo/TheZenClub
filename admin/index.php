@@ -14,16 +14,18 @@
 
 $accessLevel = $_SESSION['rol_id'];
 
+// después de case 2 se añaden los includes a los que tendrán acceso los instructores/profesores
+
 switch ($accessLevel) {
     case 1: // usuario normal -> fuera del panel
         header('Location: ../index.php');
         exit;
     case 2: // instructor
     case 3: // profesor
-        include '../includes/acp/panel_profesor.php';
+        include '/includes/acp/panel_profesor.php';
         break;
     case 4: // maestro
-        include '../includes/acp/panel_maestro.php';
+        include '/includes/acp/panel_maestro.php';
         break;
     default:
         header('Location: ../index.php');
@@ -72,7 +74,7 @@ switch ($accessLevel) {
                 }
             }
             
-            include '../includes/acp/panel_maestro.php';
+            include './includes/gestionUsuarios.php';
             ?>
         </div>
 

@@ -38,7 +38,7 @@ class DB{
         }
     }
     // Comprobar si ya existe invitación activa
-public static function comprobarInvitacion($email) {
+    public static function comprobarInvitacion($email) {
     try {
         $conexion = self::conn();
         if (!$conexion) {
@@ -54,10 +54,10 @@ public static function comprobarInvitacion($email) {
     } catch (PDOException $e) {
         error_log("Error al usar comprobarInvitacion: " . $e->getMessage());
         return null;
+        }
     }
-}
 
-// Crear invitación
+    // Crear invitación
     public static function crearInvitacion($email, $token) {
         try {
             $conexion = self::conn();
@@ -78,8 +78,27 @@ public static function comprobarInvitacion($email) {
             return false;
         }
     }
+    
+    // obtener invitaciones activas (SIN USAR)
+    public static function obtenerInvitaciones(){
+        try {
+            $conexion = self::conn();
+            if (!$conexion){
+                throw new Exception("No se pudo conectar a la base de datos");
+            }
+            $sentencia = "SELECT * FROM invitations ORDER BY created_at DESC";
+            $consulta = $conexion -> prepare($sentencia);
+            $consulta -> execute();
+            $resultado = $consulta -> fetchAll(PDO::FETCH_ASSOC);
+            $consulta -> closeCursor();
+            $conexion = null;
+            return $resultado;
 
+        } catch (PDOException $e){
+            error_log("Error al usar ObtenerInvitaciones: " . $e -> getMessage());
+            return null;
+        }
 
-
+    }
 
 }

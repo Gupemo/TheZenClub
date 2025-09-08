@@ -30,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['invitarUsuario'])) {
     unset($controller);
 
     if($resultado) {
-        header('Location: ../../admin/pages/users.php?invitar=ok');
+        header('Location: ../../admin/pages/users.php?action=invitar&invitar=ok');
         exit();
     }else{
-        header('Location: ../../admin/pages/users.php?invitar=error');
+        header('Location: ../../admin/pages/users.php?action=invitar&invitar=error');
         exit();
     }
 
