@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../core/DB.php';
+require_once __DIR__ . '/../models/invitations.php';
 
 class ControllerInvites {
     
@@ -12,12 +12,12 @@ class ControllerInvites {
 
     public function invitarUsuario($email) {
         // Comprobar si ya existe registro
-        if (DB::comprobarUsuario($email)) {
+        if (Invites::comprobarUsuario($email)) {
             return false;
         }
 
         // Comprobar si ya tiene invitación
-        if (DB::comprobarInvitacion($email)) {
+        if (Invites::comprobarInvitacion($email)) {
             return false;
         }
 
@@ -25,12 +25,20 @@ class ControllerInvites {
         $token = bin2hex(random_bytes(16));
 
         // Crear invitación
-        return DB::crearInvitacion($email, $token);
+        return Invites::crearInvitacion($email, $token);
     }
 
     public function listarInvitaciones() {
-        return DB::obtenerInvitaciones();
-        
+        return Invites::obtenerInvitaciones();
+    }
+
+    public function comprobarToken($token){
+        $invitacion = Invites::comprobarToken($token);
+        if ($invitacion){
+            return $invitacion;
+        } else{
+            return false;
+        }
 
     }
 }

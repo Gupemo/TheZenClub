@@ -41,13 +41,38 @@ CREATE TABLE IF NOT EXISTS users (
         ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
+-- Familias
+CREATE TABLE IF NOT EXISTS families (
+    family_id INT AUTO_INCREMENT PRIMARY KEY,
+    family_name VARCHAR(100) NOT NULL,    -- Ejemplo: "Familia García"
+    responsable_id INT NOT NULL,          -- Usuario encargado del pago
+    custom_fee DECIMAL(7,2) DEFAULT NULL, -- Cuota personalizada (si aplica)
+    FOREIGN KEY (responsable_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+);
+
+-- Relación familias - usuarios
+CREATE TABLE IF NOT EXISTS family_user (
+    family_id INT NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (family_id, user_id),
+    FOREIGN KEY (family_id) REFERENCES families(family_id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+);
+
 -- Invitaciones para registro
 CREATE TABLE IF NOT EXISTS invitations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL,
     token VARCHAR(64) NOT NULL UNIQUE,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    used BOOLEAN NOT NULL DEFAULT FALSE
+    used BOOLEAN NOT NULL DEFAULT FALSE,
+    user_id INT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE SET NULL
+        ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 -- Tabla de profesores (perfiles públicos)
@@ -91,14 +116,18 @@ CREATE TABLE IF NOT EXISTS attendance (
 -- Pagos
 CREATE TABLE IF NOT EXISTS payments (
     payment_id INT NOT NULL AUTO_INCREMENT,
-    user_id INT NOT NULL,
+    user_id INT NULL,          -- Pago individual (si aplica)
+    family_id INT NULL,        -- Pago familiar (si aplica)
     payment_date DATE NOT NULL,
-    payment_fee DECIMAL(5,2) NOT NULL,
+    payment_fee DECIMAL(7,2) NOT NULL,
     payment_method VARCHAR(50),
     payment_notes TEXT,
     confirmed BOOLEAN NOT NULL DEFAULT TRUE,
     PRIMARY KEY(payment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE,
+    FOREIGN KEY (family_id) REFERENCES families(family_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 ) ENGINE = InnoDB;
