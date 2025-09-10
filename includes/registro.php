@@ -1,4 +1,4 @@
-                <form action="../.." class="form" method="POST" enctype="multipart/form-data">
+                <form action="../MVC/core/router.php" class="form" method="POST" enctype="multipart/form-data">
                     <div class="camp">
                         <label for="userName">Nombre:</label>
                         <input type="text" name="userName" id="userName" placeholder="Indica tu nombre">
@@ -11,7 +11,8 @@
                     </div>
                     <div class="camp">
                         <label for="userEmail">Correo Electrónico:</label>
-                        <input type="email" name="userEmail" id="userEmail" value="<?= $invitacion['email'] ?>" disabled>
+                        <input type="email" value="<?= $invitacion['email'] ?>" disabled>
+                        <input type="hidden" name="userEmail" value="<?= $invitacion['email'] ?>">
                         <small></small>
                     </div>
                     <div class="camp">
@@ -33,8 +34,8 @@
                         <label for="userSex">Indica tu sexo</label>
                         <select name="userSex" id="userSex">
                             <option value="none"></option>
-                            <option value="HOMBRE">Hombre</option>
-                            <option value="MUJER">Mujer</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
                             <small></small>
                         </select>
                     </div>
@@ -93,6 +94,10 @@
                     </div>
                     
                     <div class="camp">
-                        <input type="submit" id="submit" class="boton" name="registro" value="Enviar">
+                        <?php
+                            $token = $_GET['token'];
+                        ?>
+                        <input type="hidden" name="token" value="<?=$token?>">
+                        <input type="submit" id="btnSubmit" class="boton" name="registro" value="Enviar">
                     </div>
                 </form>

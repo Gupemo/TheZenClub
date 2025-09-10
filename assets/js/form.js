@@ -25,7 +25,7 @@ check2.addEventListener('change', () => {
   }
 });
 
-let btnSubmit = document.getElementById('submit');
+let btnSubmit = document.getElementById('btnSubmit');
 let form = document.querySelector('.form');
 
 btnSubmit.addEventListener('click', (e)=>{

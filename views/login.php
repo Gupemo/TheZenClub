@@ -39,7 +39,7 @@
                     </div>
                     <div class="camp">
                         <input type="reset" value="Borrar" class="boton">
-                        <input type="submit" value="Iniciar sesión" class="boton">
+                        <input type="submit" name="login" value="Iniciar sesión" class="boton">
                     </div>
 
                 </form>

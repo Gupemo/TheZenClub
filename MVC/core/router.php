@@ -5,10 +5,10 @@
  */
 
 // indispensables
-/* require_once '../controllers/controllerLogin.php';
-require_once '../controllers/controllerProfile.php';
-require_once '../controllers/controllerNews.php'; */
+
 require_once '../controllers/controllerInvites.php';
+require_once '../controllers/controllerUsers.php';
+require_once '../controllers/controllerAuth.php';
 require_once '../../config/debug.php';
 
 // iniciando sesion
@@ -48,6 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
 
         $uploadDir = __DIR__ . "/../assets/users/profilePictures/"; // ruta en tu proyecto
+
+        if(!is_dir($uploadDir)){
+            mkdir($uploadDir, 0777, true);
+        
+        }
         $extension = strtolower(pathinfo($_FILES['profilePicture']['name'], PATHINFO_EXTENSION));
 
         // seguridad: permitir solo imágenes
@@ -63,28 +68,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
     }
     // datos de usuario
     $userData = [
-        'user_name'      => htmlspecialchars($_POST['userName']),
-        'user_subname'   => htmlspecialchars($_POST['userSubname']),
-        'user_birthdate' => htmlspecialchars($_POST['userBirthDate']),
-        'user_email'     => filter_var($_POST['userEmail'], FILTER_SANITIZE_EMAIL),
-        'user_phone'     => htmlspecialchars($_POST['userPhone']),
-        'user_sex'       => htmlspecialchars($_POST['userSex']),
-        'user_picture'   => $user_picture,
-        'user_deseases'  => !empty($_POST['userDeseases']) ? htmlspecialchars($_POST['userDeseases']) : null,
-        'user_password'  => password_hash($_POST['userPassword'], PASSWORD_DEFAULT),
-        'tos_accepted'   => isset($_POST['conditions']) ? 1 : 0
+        'user_name'         => htmlspecialchars($_POST['userName']),
+        'user_subname'      => htmlspecialchars($_POST['userSubname']),
+        'user_birthdate'    => htmlspecialchars($_POST['userBirthDate']),
+        'user_email'        => filter_var($_POST['userEmail'], FILTER_SANITIZE_EMAIL),
+        'user_phone'        => htmlspecialchars($_POST['userPhone']),
+        'user_sex'          => htmlspecialchars($_POST['userSex']),
+        'user_picture'      => $user_picture,
+        'user_deseases'     => !empty($_POST['userDeseases']) ? htmlspecialchars($_POST['userDeseases']) : null,
+        'user_password'     => password_hash($_POST['userPassword'], PASSWORD_DEFAULT),
+        'tos_accepted'      => isset($_POST['conditions']) ? 1 : 0,
     ];
     // datos de contacto (si los rellena)
     $dataContact = [
         'contact_name'    => !empty($_POST['userContactName']) ? htmlspecialchars($_POST['userContactName']) : null,
         'contact_subname' => !empty($_POST['userContactSubname']) ? htmlspecialchars($_POST['userContactSubname']) : null,
         'contact_phone'   => !empty($_POST['userContactPhone']) ? htmlspecialchars($_POST['userContactPhone']) : null,
-        'parentesco'      => !empty($_POST['kindship']) ? htmlspecialchars($_POST['kindship']) : null
+        'relationship'      => !empty($_POST['kindship']) ? htmlspecialchars($_POST['kindship']) : null
     ];
-
+    
+    $token = htmlspecialchars($_POST['token']);
 
     $controlador = new ControllerUsers(); 
-    $resultado = $controlador->registrarUsuario($userData, $dataContact);
+    $resultado = $controlador->registrarUsuario($userData, $dataContact, $token);
 
     unset($controlador);
     if ($resultado) {
@@ -94,4 +100,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
         header('Location: ../../views/registro.php?registro=error');
         exit();
     }
+}
+
+//login
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
+    $loginData = [
+        'email' => htmlspecialchars($_POST['email']),
+        'password' => htmlspecialchars($_POST['password'])
+    ];
+
+    $controlador = new ControllerAuth();
+    $resultado = $controlador -> login($loginData);
+    unset($controlador);
+
+    if ($resultado){
+        header('Location: ../../views/users/profile.php?login=ok');
+        exit();
+    } else {
+        header('Location: ../../views/userlogin.php?login=error');
+        exit();
+    }
+
 }

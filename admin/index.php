@@ -7,30 +7,15 @@
     <title>Panel de Control</title>
     <link rel="stylesheet" href="/assets/styles/panel.css">
     <?php
-    /* if (!isset($_SESSION['rol_id'])) {
-    header('Location: ../index.php');
-    exit;
-}
-
-$accessLevel = $_SESSION['rol_id'];
-
-// después de case 2 se añaden los includes a los que tendrán acceso los instructores/profesores
-
-switch ($accessLevel) {
-    case 1: // usuario normal -> fuera del panel
+    session_start();
+    if (!isset($_SESSION['rol'])) {
         header('Location: ../index.php');
         exit;
-    case 2: // instructor
-    case 3: // profesor
-        include '/includes/acp/panel_profesor.php';
-        break;
-    case 4: // maestro
-        include '/includes/acp/panel_maestro.php';
-        break;
-    default:
-        header('Location: ../index.php');
-        exit;
-}*/
+    }
+
+    $accessLevel = $_SESSION['rol'];
+
+    // después de case 2 se añaden los includes a los que tendrán acceso los instructores/profesores
     ?>
 
 </head>
@@ -52,7 +37,25 @@ switch ($accessLevel) {
 
         <!-- Contenido -->
         <div class="contenedor">
+
             <?php
+            switch ($accessLevel) {
+                case 1: // usuario normal -> fuera del panel
+                    header('Location: ../index.php');
+                    exit;
+                case 2: // instructor
+                case 3: // profesor
+                    include '/includes/acp/panel_profesor.php';
+                    break;
+                case 4: // maestro
+                    include './includes/gestion/gestion_invitaciones.php';
+                    include './includes/gestion/gestion_cuotas.php';
+                    break;
+                default:
+                    header('Location: ../index.php');
+                    exit;
+            }
+
             $acciones = ['borrado', 'creacion', 'editar'];
 
             foreach ($acciones as $accion) {
@@ -73,8 +76,7 @@ switch ($accessLevel) {
                     echo '</article>';
                 }
             }
-            
-            include './includes/gestionUsuarios.php';
+
             ?>
         </div>
 

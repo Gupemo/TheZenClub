@@ -67,14 +67,14 @@ switch ($accessLevel) {
             <?php
             $action = $_GET['action'] ?? null;
             switch ($action) {
-                case 'invitar':
-                    include '../includes/invitarUsuarios.php';
+                case 'listar':
+                    include '../includes/listar/listar_cuotas.php';
                     break;
                 case 'listarInvitaciones':
-                    include '../includes/listar/listarInvitaciones.php';
+                    include '../includes/listarInvitaciones.php';
                     break;
                 default:
-                    include '../includes/listar/listarUsuarios.php';
+                    include '../includes/listarUsuarios.php';
                     break;
             }
             ?>

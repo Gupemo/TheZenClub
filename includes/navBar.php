@@ -56,8 +56,8 @@ $menuAdministracion = [
 $menuActual = $menuDefault;
 
 // switch para cambiar el menú dependiendo del rol del usuario.
-if (isset($_SESSION['usuario'])) {
-    $rol = $_SESSION['usuario']['rol'];
+if (isset($_SESSION['rol'])) {
+    $rol = $_SESSION['rol'];
 
     switch ($rol) {
         case 1:

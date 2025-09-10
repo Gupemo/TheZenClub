@@ -13,21 +13,24 @@ class ControllerAuth {
         }
     }
 
-    public function login($email, $password) {
-        $user = Users::obtenerEmail($email);
+    public function login($dataLogin) {
+        $user = Users::obtenerEmail($dataLogin['email']);
         
-        if($user && password_verify($password, $user['user_password'])){
-            $_SESSION['user_id'] = $user['user_id'];
+        if(!$user){
+            error_log("Login error: no existe el email " . $dataLogin['email']);
+            return false;
+        }
+
+        if(password_verify($dataLogin['password'], $user['user_password'])){
+            session_regenerate_id(true);
+            $_SESSION['user_id']   = $user['user_id'];
             $_SESSION['user_name'] = $user['user_name'];
-            $_SESSION['rol'] = $user['rol_id'];
+            $_SESSION['rol']       = $user['rol_id'];
             return true;
-        } else{
+        } else {
+            error_log("Login error: password incorrecta para ".$dataLogin['email']);
             return false;
         }
     }
 
-    public function logout(){
-        session_destroy();
-        return true;
-    }
 }

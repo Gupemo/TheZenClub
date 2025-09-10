@@ -23,7 +23,7 @@ $invitaciones = $controlador ->listarInvitaciones();
                 <td><?= htmlspecialchars($inv['token']) ?></td>
                 <td>
                     <input type="text" readonly
-                           value="https://tusitio.com/registro.php?token=<?= $inv['token'] ?>"
+                           value="https://thezenclub.es/views/registro.php?token=<?= $inv['token'] ?>"
                            size="50">
                 </td>
                 <td><?= $inv['used'] ? "✅ Usado" : "⏳ Pendiente" ?></td>

@@ -10,9 +10,9 @@
     <meta name="description" content="Escuela de artes marciales, especializada en Jiu Jitsu brasileño">
     <title>The Zen Club - Inicio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./assets/styles/normalize.css">
-    <link rel="stylesheet" href="../../assets/styles/styles.css">
-    <link rel="manifest" href="../../assets/data/manifest.json">
+    <link rel="stylesheet" href="../assets/styles/normalize.css">
+    <link rel="stylesheet" href="../assets/styles/styles.css">
+    <link rel="manifest" href="/assets/data/manifest.json">
     <link rel="icon" type="image/png" href="/assets/icons/logo.ico">
 
 </head>
@@ -23,17 +23,18 @@
             <img src="/assets/logo.png" alt="Logo del club" class="header__logo">
         </header>
         <?php
-        include '../../includes/navBar.php';
+        include '../includes/navBar.php';
         ?>
         <main class="main">
-            <section class="section">
-                <?php
-                print_r($_SESSION);
-                ?>
-            </section>
+            <?php
+                session_unset();
+                session_destroy();
+                header('location: ./login.php');
+            
+            ?>
         </main>
         <?php
-        include '../../includes/footer.php';
+        include '../includes/footer.php';
         ?>
 </body>
 <script src="/assets/js/hamburguesa.js"></script>

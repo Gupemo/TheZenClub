@@ -1,5 +1,5 @@
 <div class="lista-menu">
-    <h2>Gestión de usuarios</h2>
+    <h2>Gestión de invitaciones</h2>
     <div class="menu-item-list">
         <div class="menu-item">
             <a href="/admin/pages/users.php?action=invitar" title="Invitar usuario">
@@ -17,12 +17,3 @@
 </div>
 
 <hr class="cambio_seccion">
-
-<div class="lista-menu">
-    <h2>Menú asistencia</h2>
-</div>
-
-<hr class="cambio_seccion">
-<div class="lista">
-    <h2></h2>
-</div>

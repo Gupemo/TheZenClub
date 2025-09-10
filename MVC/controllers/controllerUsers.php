@@ -12,8 +12,8 @@ class controllerUsers{
     }
 
     //funcion para registrar usuario.
-    public function registrarUsuario($usersData, $dataContact){
-        return Users::registrarUsuario($usersData, $dataContact);
+    public function registrarUsuario($usersData, $dataContact, $token){
+        return Users::registrarUsuario($usersData, $dataContact, $token);
 
     }
 }

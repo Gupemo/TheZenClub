@@ -10,12 +10,26 @@ CREATE TABLE IF NOT EXISTS roles (
     PRIMARY KEY(id_rol)
 ) ENGINE = InnoDB;
 
--- 1 user, 2 instructor, 3 profesor, 4 maestro
+-- Insertar roles iniciales
 INSERT INTO roles (nombre) VALUES
     ('usuario'), 
     ('instructor'),
     ('profesor'),
     ('maestro');
+
+-- Tabla de cuotas
+CREATE TABLE IF NOT EXISTS fees (
+    fee_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    amount DECIMAL(7,2) NOT NULL
+) ENGINE = InnoDB;
+
+-- Insertar cuotas iniciales
+INSERT INTO fees (name, amount) VALUES
+  ('Mensualidad básica', 50.00),   -- fee_id = 1
+  ('Mensualidad Kids', 30.00),     -- fee_id = 2
+  ('Mensualidad Juveniles', 40.00),-- fee_id = 3
+  ('Mensualidad MMA', 60.00);      -- fee_id = 4
 
 -- Tabla de usuarios
 CREATE TABLE IF NOT EXISTS users (
@@ -23,13 +37,14 @@ CREATE TABLE IF NOT EXISTS users (
     user_name VARCHAR(100) NOT NULL,
     user_subname VARCHAR(200) NOT NULL,
     user_birthdate DATE NOT NULL,
-    categoria ENUM('Kids','Juveniles','Adultos', 'MMA') DEFAULT 'Adultos',
+    categoria ENUM('Kids','Juveniles','Adultos','MMA') DEFAULT 'Adultos',
     user_email VARCHAR(100) NOT NULL UNIQUE,
     user_phone VARCHAR(10) NOT NULL,
-    user_sex ENUM('Hombre', 'Mujer'),
+    user_sex ENUM('Hombre','Mujer'),
     user_picture VARCHAR(255) DEFAULT NULL,
     user_deseases VARCHAR(250),
     rol_id INT DEFAULT 1 NULL,
+    fee_id INT DEFAULT 1 NULL,
     user_active BOOLEAN NOT NULL DEFAULT TRUE,
     fecha_alta DATE NOT NULL DEFAULT CURRENT_DATE,
     fecha_baja DATE DEFAULT NULL,
@@ -37,19 +52,23 @@ CREATE TABLE IF NOT EXISTS users (
     tos_accepted BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY(user_id),
     FOREIGN KEY (rol_id) REFERENCES roles(id_rol)
-        ON DELETE SET NULL
-        ON UPDATE CASCADE
+        ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (fee_id) REFERENCES fees(fee_id)
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Familias
 CREATE TABLE IF NOT EXISTS families (
     family_id INT AUTO_INCREMENT PRIMARY KEY,
-    family_name VARCHAR(100) NOT NULL,    -- Ejemplo: "Familia García"
-    responsable_id INT NOT NULL,          -- Usuario encargado del pago
-    custom_fee DECIMAL(7,2) DEFAULT NULL, -- Cuota personalizada (si aplica)
+    family_name VARCHAR(100) NOT NULL,
+    responsable_id INT NOT NULL,
+    fee_id INT DEFAULT NULL,
+    custom_fee DECIMAL(7,2) DEFAULT NULL,
     FOREIGN KEY (responsable_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-);
+        ON DELETE CASCADE,
+    FOREIGN KEY (fee_id) REFERENCES fees(fee_id)
+        ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE = InnoDB;
 
 -- Relación familias - usuarios
 CREATE TABLE IF NOT EXISTS family_user (
@@ -71,8 +90,7 @@ CREATE TABLE IF NOT EXISTS invitations (
     used BOOLEAN NOT NULL DEFAULT FALSE,
     user_id INT NULL,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE SET NULL
-        ON UPDATE CASCADE
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 -- Tabla de profesores (perfiles públicos)
@@ -97,8 +115,7 @@ CREATE TABLE IF NOT EXISTS emergency_contacts (
     relationship VARCHAR(50),
     PRIMARY KEY(contact_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Asistencia
@@ -109,15 +126,15 @@ CREATE TABLE IF NOT EXISTS attendance (
     present BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY(attendance_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Pagos
 CREATE TABLE IF NOT EXISTS payments (
     payment_id INT NOT NULL AUTO_INCREMENT,
-    user_id INT NULL,          -- Pago individual (si aplica)
-    family_id INT NULL,        -- Pago familiar (si aplica)
+    user_id INT NULL,
+    family_id INT NULL,
+    fee_id INT NULL,
     payment_date DATE NOT NULL,
     payment_fee DECIMAL(7,2) NOT NULL,
     payment_method VARCHAR(50),
@@ -125,11 +142,11 @@ CREATE TABLE IF NOT EXISTS payments (
     confirmed BOOLEAN NOT NULL DEFAULT TRUE,
     PRIMARY KEY(payment_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
+        ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (family_id) REFERENCES families(family_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (fee_id) REFERENCES fees(fee_id)
+        ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Cinturones
@@ -168,11 +185,9 @@ CREATE TABLE IF NOT EXISTS user_belt (
     active BOOLEAN NOT NULL DEFAULT FALSE,
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
+        ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (belt_id) REFERENCES belts(belt_id)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
+        ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Competiciones
