@@ -45,7 +45,7 @@ switch ($accessLevel) {
         </header>
 
         <!-- Navbar -->
-       <nav class="navbar">
+        <nav class="navbar">
             <ul>
                 <li class="nav-link"><a href="../index.php">Inicio</a></li>
                 <li class="nav-link"><a href="#">Noticias</a></li>
@@ -54,15 +54,34 @@ switch ($accessLevel) {
 
         <!-- Contenido -->
         <div class="contenedor">
-            <?php if (isset($_GET['invitar'])): ?>
-                <?php if ($_GET['invitar'] === 'ok'): ?>
-                    <p style="color:green;">✅ Invitación creada correctamente</p>
-                <?php elseif ($_GET['invitar'] === 'error'): ?>
-                    <p style="color:red;">❌ No se pudo crear la invitación</p>
-                <?php elseif ($_GET['invitar'] === 'invalid'): ?>
-                    <p style="color:red;">⚠️ El email no es válido</p>
-                <?php endif; ?>
-            <?php endif; ?>
+            <?php
+            $mensajes = [
+                // Borrar
+                'borrar_ok'       => ['color' => 'green', 'icono' => '✅', 'texto' => 'Cuota eliminada correctamente'],
+                'borrar_error'    => ['color' => 'red',   'icono' => '❌', 'texto' => 'No se pudo borrar la cuota'],
+                'borrar_nodfault' => ['color' => 'red',   'icono' => '⚠️', 'texto' => 'No se puede eliminar la cuota que se asigna por defecto'],
+
+                // Editar
+                'editar_ok'    => ['color' => 'green', 'icono' => '✅', 'texto' => 'Cuota editada correctamente'],
+                'editar_error' => ['color' => 'red',   'icono' => '❌', 'texto' => 'No se pudo editar la cuota'],
+
+                // Crear
+                'crear_ok'    => ['color' => 'green', 'icono' => '✅', 'texto' => 'Cuota creada correctamente'],
+                'crear_error' => ['color' => 'red',   'icono' => '❌', 'texto' => 'No se pudo crear la cuota'],
+            ];
+
+            foreach (['borrar', 'editar', 'crear'] as $accion) {
+                if (isset($_GET[$accion])) {
+                    $clave = $accion . '_' . $_GET[$accion];
+                    if (isset($mensajes[$clave])) {
+                        $m = $mensajes[$clave];
+                        echo '<p style="color:' . htmlspecialchars($m['color']) . ';">' .
+                            $m['icono'] . ' ' . htmlspecialchars($m['texto']) .
+                            '</p>';
+                    }
+                }
+            }
+            ?>
 
             <?php
             $action = $_GET['action'] ?? null;
@@ -70,8 +89,11 @@ switch ($accessLevel) {
                 case 'listar':
                     include '../includes/listar/listar_cuotas.php';
                     break;
-                case 'listarInvitaciones':
-                    include '../includes/listarInvitaciones.php';
+                case 'editar':
+                    include '../includes/editar/editar_cuotas.php';
+                    break;
+                case 'crear':
+                    include '../includes/crear/crear_cuotas.php';
                     break;
                 default:
                     include '../includes/listarUsuarios.php';

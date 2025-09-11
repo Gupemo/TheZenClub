@@ -9,6 +9,7 @@
 require_once '../controllers/controllerInvites.php';
 require_once '../controllers/controllerUsers.php';
 require_once '../controllers/controllerAuth.php';
+require_once '../controllers/controllerFee.php';
 require_once '../../config/debug.php';
 
 // iniciando sesion
@@ -122,3 +123,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
     }
 
 }
+
+// borrar cuotas
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['borrarCuota'])) {
+    $fee_id = (int) $_POST['fee_id']; 
+
+    if ($fee_id === 1) {
+        // No permitir borrar la cuota por defecto
+        header('Location: ../../admin/pages/cuotas.php?action=listar&borrar=nodfault');
+        exit();
+    }
+
+    $controlador = new ControllerFee();
+    $resultado = $controlador->borrarCuota($fee_id);
+    unset($controlador);
+
+    if ($resultado) {
+        header('Location: ../../admin/pages/cuotas.php?action=listar&borrar=ok');
+        exit();
+    } else {
+        header('Location: ../../admin/pages/cuotas.php?action=listar&borrar=error');
+        exit();
+    }
+}
+
+// editar cuotas
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['editarCuota'])){
+    $datosCuota = [
+        "fee_id"    => (int)htmlspecialchars($_POST['fee_id']),
+        "name"      => htmlspecialchars($_POST['name']),
+        "amount"    => htmlspecialchars($_POST['amount'])
+    ];
+
+    $controlador = new ControllerFee();
+    $resultado = $controlador -> editarCuota($datosCuota);
+    unset($controlador);
+
+    if($resultado){
+        header('Location: ../../admin/pages/cuotas.php?action=listar&editar=ok');
+        exit();
+    } else {
+        header('Location: ../../admin/pages/cuotas.php?action=listar&editar=error');
+        exit();
+    }
+}
+// crear cuota
+if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['crearCuota'])){
+    $datosCuota = [
+        "name" => htmlspecialchars($_POST['name']),
+        "amount" => htmlspecialchars($_POST['amount'])
+    ];
+
+    $controlador = new ControllerFee();
+    $resultado = $controlador -> crearCuota($datosCuota);
+    unset($controlador);
+
+    if($resultado){
+        header('Location: ../../admin/pages/cuotas.php?action=listar&crear=ok');
+        exit();
+    } else {
+        header('Location: ../../admin/pages/cuotas.php?action=listar&crear=error');
+        exit();
+    }
+}
+
