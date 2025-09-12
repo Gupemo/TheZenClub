@@ -27,9 +27,6 @@ CREATE TABLE IF NOT EXISTS fees (
 -- Insertar cuotas iniciales
 INSERT INTO fees (name, amount) VALUES
   ('Mensualidad básica', 50.00),   -- fee_id = 1
-  ('Mensualidad Kids', 30.00),     -- fee_id = 2
-  ('Mensualidad Juveniles', 40.00),-- fee_id = 3
-  ('Mensualidad MMA', 60.00);      -- fee_id = 4
 
 -- Tabla de usuarios
 CREATE TABLE IF NOT EXISTS users (

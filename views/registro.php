@@ -59,8 +59,8 @@
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </div>
 
-    <script src="/assets/js/hamburguesa.js"></script>
-    <!-- <script src="/assets/js/form.js"></script> -->
-    <script src="/assets/js/terms.js"></script>
+    <script src="../assets/js/hamburguesa.js"></script>
+    <script src="/assets/js/form.js"></script>
+    <script src="../assets/js/terms.js"></script>
 </body>
 </html>

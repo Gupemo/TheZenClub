@@ -1,0 +1,65 @@
+<?php
+require_once 'conexion.php';
+
+class Payments {
+
+    public static function pagosOkporMes($mes, $anio) {
+        try {
+            $conexion = conexion::conn();
+            $sentencia = "
+                SELECT u.name, u.subname, f.name AS cuota, p.amount, p.payment_date
+                FROM payments p
+                JOIN users u ON p.user_id = u.user_id
+                JOIN fees f ON p.fee_id = f.fee_id
+                WHERE MONTH(p.payment_date) = :mes
+                  AND YEAR(p.payment_date) = :anio
+                ORDER BY u.name
+            ";
+            $consulta = $conexion->prepare($sentencia);
+            $consulta->execute([
+                'mes' => $mes,
+                'anio' => $anio
+            ]);
+            
+            $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+            
+            $consulta->closeCursor();
+            $conexion = null;
+            return $resultado;
+
+        } catch (PDOException $e) {
+            error_log("Error al usar pagosOkPorMes: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    //cuotas pendientes
+    public static function cuotasPendientes($mes, $anio) {
+    try {
+        $conexion = conexion::conn();
+        $sentencia = "
+            SELECT u.user_id, u.name, u.subname
+            FROM users u
+            LEFT JOIN payments p 
+                ON u.user_id = p.user_id 
+                AND MONTH(p.payment_date) = :mes 
+                AND YEAR(p.payment_date) = :anio
+            WHERE p.payment_id IS NULL
+            ORDER BY u.subname, u.name
+        ";
+        $consulta = $conexion->prepare($sentencia);
+        $consulta->execute([
+            'mes'  => $mes,
+            'anio' => $anio
+        ]);
+        $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        $consulta->closeCursor();
+        $conexion = null;
+        return $resultado;
+    } catch (PDOException $e) {
+        error_log("Error al usar cuotasPendientes: " . $e->getMessage());
+        return false;
+    }
+}
+
+}

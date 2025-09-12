@@ -26,24 +26,45 @@
         include '../includes/navBar.php';
         ?>
         <main class="main">
-            <section class="section">
-                <form action="../MVC/core/router.php" method="POST">
+            <section class="section formulario-login">
+                <?php
+
+                    if (isset($_GET['login']) && $_GET['login'] === 'error') {
+                        ?>
+                        <small class="error">Error al intentar loguear.</small>
+                        <?php
+                    }
+                ?>
+
+                <?php
+
+                if(isset($_SESSION['rol'])){
+                    ?>
+                    <small class="error"> Ya tienes una sesión iniciada, ve a tu <a href="./users/profile.php">perfil</a>
+                    <?php
+                }else{
+                    ?>
+                <form action="../MVC/core/router.php" method="POST" class="login-form">
 
                     <div class="camp">
                         <label for="email">Email:</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" id="email">
                     </div>
                     <div class="camp">
                         <label for="password">Contraseña:</label>
-                        <input type="password" name="password">
+                        <input type="password" name="password" id="password">
                     </div>
-                    <div class="camp">
+                    <div class="camp botones">
                         <input type="reset" value="Borrar" class="boton">
                         <input type="submit" name="login" value="Iniciar sesión" class="boton">
                     </div>
 
                 </form>
+                <?php
+                }
+                ?>
             </section>
+
         </main>
         <?php
         include '../includes/footer.php';

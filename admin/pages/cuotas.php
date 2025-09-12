@@ -95,6 +95,15 @@ switch ($accessLevel) {
                 case 'crear':
                     include '../includes/crear/crear_cuotas.php';
                     break;
+                case 'pagosok':
+                    include '../includes/listar/listar_cuotasok.php';
+                    break;
+                case 'pagospendientes':
+                    include '../includes/listar/listar_cuotaspendientes.php';
+                    break;
+                case 'asignarCuotas':
+                    include '../includes/gestion/gestion_asignarCuotas.php';
+                    break;
                 default:
                     include '../includes/listarUsuarios.php';
                     break;

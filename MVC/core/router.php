@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
         header('Location: ../../views/users/profile.php?login=ok');
         exit();
     } else {
-        header('Location: ../../views/userlogin.php?login=error');
+        header('Location: ../../views/login.php?login=error');
         exit();
     }
 

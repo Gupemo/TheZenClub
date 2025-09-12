@@ -26,7 +26,7 @@
         include '../../includes/navBar.php';
         ?>
         <main class="main">
-            <section class="section">
+            <section class="section profile">
                 <?php
                 print_r($_SESSION);
                 ?>

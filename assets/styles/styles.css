@@ -63,6 +63,11 @@ h2{
   overflow: hidden;
   transition: max-height 0.5s ease, opacity 0.5s ease;
 }
+.camp.botones{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 .camp input.boton,
 .boton {
     background-color: var(--azulClaro);
@@ -74,17 +79,9 @@ h2{
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 700;
+    max-width: 14.5rem;
 }
-.camp input.boton:hover,
-.boton:hover{
-    background-color: var(--azul);
-}
-@media (min-width: 1024px) {
-    .camp input.boton, 
-    .boton{
-        max-width: 20rem;
-    }
-}
+
 
 /* Header */
 .header {
@@ -222,8 +219,15 @@ h2{
     margin: 0 auto;
     font-size: 1.8rem;
 }
+.section, .formulario-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-/* Formulario */
+}
+
+/* Formulario de registro */
 .hrform{
     color: var(--azulClaro);
     background-color: var(--azulClaro);
@@ -314,6 +318,16 @@ input[type="checkbox"] {
     align-items: center;
     cursor: pointer;
     font-weight: 500;
+}
+/* Formulario login */
+
+.login-form{
+    max-width: 75rem;
+    
+}
+.login-form input{
+    width: 30rem;
+    box-shadow: var(--sombra);
 }
 
 /* Ventana modal terminos y condiciones */

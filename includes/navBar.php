@@ -26,7 +26,7 @@ $menuUsuario = [
     '/views/horarios.php'       => 'Horarios',
     '/views/nosotros.php'       => 'Sobre nosotros',
     'views/noticias.php'        => 'Noticias',
-    '/views/perfil.php'         => 'perfil',
+    '/views/users/profile.php'  => 'perfil',
     '/views/logout.php'         => 'Cerrar sesión'
 ];
 
@@ -36,7 +36,7 @@ $menuProfesores = [
     '/views/horarios.php'       => 'Horarios',
     '/views/nosotros.php'       => 'Sobre nosotros',
     'views/noticias.php'        => 'Noticias',
-    '/views/perfil.php'         => 'perfil',
+    '/views/users/profile.php'  => 'perfil',
     '/admin/index.php'          => 'Panel de profesor',
     '/views/logout.php'         => 'Cerrar sesión'
 ];
@@ -47,7 +47,7 @@ $menuAdministracion = [
     '/views/horarios.php'       => 'Horarios',
     '/views/nosotros.php'       => 'Sobre nosotros',
     'views/noticias.php'        => 'Noticias',
-    '/views/perfil.php'         => 'perfil',
+    '/views/users/profile.php'  => 'perfil',
     '/admin/index.php'          => 'Panel de administración',
     '/views/logout.php'         => 'Cerrar sesión'
 ];
