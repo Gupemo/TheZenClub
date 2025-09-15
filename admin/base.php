@@ -13,15 +13,10 @@
         <!-- Header -->
         <header class="header">
             <h1>Panel de administración</h1>
+            <?php
+            include './includes/panelNavbar.php';
+            ?>
         </header>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            <ul>
-                <li class="nav-link"><a href="#">Inicio</a></li>
-                <li class="nav-link"><a href="#">Noticias</a></li>
-            </ul>
-        </nav>
 
         <!-- Contenido -->
         <div class="contenedor">
@@ -30,7 +25,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <p>© 2025 The Zen Club - Panel de administración</p>
+            <p>&copy; 2025 The Zen Club - Panel de administración</p>
             <p>http://github.com/gupemo</p>
         </footer>
     </main>

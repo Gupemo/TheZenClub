@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Control</title>
+    <title>- The zen club - Panel de Control</title>
     <link rel="stylesheet" href="/assets/styles/panel.css">
     <?php
     session_start();
@@ -25,15 +25,10 @@
         <!-- Header -->
         <header class="header">
             <h1>Panel de administración</h1>
+            <?php
+            include './includes/panelNavbar.php';
+            ?>
         </header>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            <ul>
-                <li class="nav-link"><a href="#">Inicio</a></li>
-                <li class="nav-link"><a href="#">Noticias</a></li>
-            </ul>
-        </nav>
 
         <!-- Contenido -->
         <div class="contenedor">

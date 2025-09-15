@@ -42,15 +42,11 @@ switch ($accessLevel) {
         <!-- Header -->
         <header class="header">
             <h1>Panel de administración</h1>
+            <!-- Navbar -->
+            <?php
+            include '../includes/panelNavbar.php';
+            ?>
         </header>
-
-        <!-- Navbar -->
-        <nav class="navbar">
-            <ul>
-                <li class="nav-link"><a href="../index.php">Inicio</a></li>
-                <li class="nav-link"><a href="#">Noticias</a></li>
-            </ul>
-        </nav>
 
         <!-- Contenido -->
         <div class="contenedor">
