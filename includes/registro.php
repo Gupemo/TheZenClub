@@ -98,6 +98,7 @@
                             $token = $_GET['token'];
                         ?>
                         <input type="hidden" name="token" value="<?=$token?>">
-                        <input type="submit" id="btnSubmit" class="boton" name="registro" value="Enviar">
+                        <input type="hidden" name="registro" value="registro">
+                        <input type="submit" id="btnSubmit" class="boton" value="Enviar">
                     </div>
                 </form>

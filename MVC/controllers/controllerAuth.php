@@ -1,17 +1,11 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/models/conexion.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/models/invitations.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/models/users.php';
 
-require_once '../models/conexion.php';
-require_once '../models/invitations.php';
-require_once '../models/users.php';
 
 class ControllerAuth {
-
-    // inicio de sesion (por si de flais)
-    public function __construct() {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-    }
 
     public function login($dataLogin) {
         $user = Users::obtenerEmail($dataLogin['email']);

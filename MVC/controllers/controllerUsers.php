@@ -1,15 +1,10 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/models/conexion.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/models/users.php';
 
-require_once '../models/conexion.php';
-require_once '../models/users.php';
 
-class controllerUsers{
-    public function __construct(){
-        if(session_status() === PHP_SESSION_NONE){
-            session_start();
-        }
-
-    }
+class ControllerUsers{
 
     //funcion para registrar usuario.
     public function registrarUsuario($usersData, $dataContact, $token){

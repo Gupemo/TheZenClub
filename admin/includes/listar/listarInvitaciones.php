@@ -1,12 +1,12 @@
-
 <?php
-require_once '../../MVC/controllers/controllerInvites.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/controllers/controllerInvites.php';
 $controlador = new ControllerInvites();
-$invitaciones = $controlador ->listarInvitaciones();
+$invitaciones = $controlador->listarInvitaciones();
 ?>
 
 <h2>Listado de invitaciones</h2>
 
+<form action="../../MVC/core/router.php" method="post">
 <table border="1" cellpadding="8">
     <tr>
         <th>Email</th>
@@ -35,4 +35,5 @@ $invitaciones = $controlador ->listarInvitaciones();
     <?php endif; ?>
 </table>
 
-<button type="submit">Enviar seleccionados</button>
+<button type="submit" name="reenviarInvitaciones">Enviar seleccionados</button>
+</form>

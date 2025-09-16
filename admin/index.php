@@ -1,3 +1,6 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,7 +10,6 @@
     <title>- The zen club - Panel de Control</title>
     <link rel="stylesheet" href="/assets/styles/panel.css">
     <?php
-    session_start();
     if (!isset($_SESSION['rol'])) {
         header('Location: ../index.php');
         exit;

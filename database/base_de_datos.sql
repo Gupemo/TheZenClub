@@ -1,7 +1,7 @@
--- Crear la base de datos
+/* -- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS thezenclub CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-USE thezenclub;
+USE thezenclub; */
 
 -- Tabla de roles
 CREATE TABLE IF NOT EXISTS roles (

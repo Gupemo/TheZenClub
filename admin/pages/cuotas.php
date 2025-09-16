@@ -1,3 +1,6 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -7,32 +10,14 @@
     <title>Panel de Control</title>
     <link rel="stylesheet" href="/assets/styles/panel.css">
     <?php
-    /* if (!isset($_SESSION['rol_id'])) {
+/*      if (!isset($_SESSION['rol_id'])) {
     header('Location: ../index.php');
     exit;
-}
-
-$accessLevel = $_SESSION['rol_id'];
-
-switch ($accessLevel) {
-    case 1: // usuario normal -> fuera del panel
-        header('Location: ../index.php');
-        exit;
-    case 2: // instructor
-    case 3: // profesor
-        include '../includes/acp/panel_profesor.php';
-        break;
-    case 4: // maestro
-        include '../includes/acp/panel_maestro.php';
-        break;
-    default:
-        header('Location: ../index.php');
-        exit;
-}*/
+} */
     ?>
 
     <?php
-    require_once '../../config/debug.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
     ?>
 
 </head>

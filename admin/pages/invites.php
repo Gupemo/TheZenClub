@@ -1,3 +1,6 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,7 +35,7 @@ switch ($accessLevel) {
     ?>
 
     <?php
-    require_once '../../config/debug.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
     ?>
 
 </head>
@@ -78,7 +81,7 @@ switch ($accessLevel) {
                     include '../includes/listar/listarInvitaciones.php';
                     break;
                 default:
-                    include '../includes/listar/listarUsuarios.php';
+                    include '../includes/listar/listarInvitaciones.php';
                     break;
             }
             ?>

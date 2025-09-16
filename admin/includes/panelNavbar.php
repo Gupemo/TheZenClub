@@ -1,9 +1,5 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
 // Ruta actual (sin query string)
 $current = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -23,6 +19,9 @@ $menuProfesor = [
         "Lista de usuarios" => "/admin/pages/users.php?action=listar",
         "Usuarios inactivos" => "/admin/pages/users.php?action=listarInactivos",
         "Borrar usuario" => "/admin/pages/users.php?action=borrarUsuario",
+    ],
+    "pagos" => [
+        "Registrar pagos" => "/admin/pages/pagos.php"
     ]
 ];
 

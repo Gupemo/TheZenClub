@@ -6,14 +6,21 @@ require_once 'conexion.php';
 
 class Fees{
 
-    // listar las cuotas
+    // listar las cuotas con las personas que tienen asignadas.
     public static function listaCuotas(){
             try{
             $conexion = conexion::conn();
             if(!$conexion){
                 throw new Exception("No se pudo conectar a la base de datos");
             }
-            $sentencia = "SELECT * FROM fees";
+            $sentencia = "  SELECT f.fee_id, f.name, f.amount,
+                                COUNT(DISTINCT u.user_id) AS total_usuarios,
+                                COUNT(DISTINCT fa.family_id) AS total_familias
+                            FROM fees f
+                            LEFT JOIN users u ON f.fee_id = u.fee_id
+                            LEFT JOIN families fa ON f.fee_id = fa.fee_id
+                            GROUP BY f.fee_id, f.name, f.amount
+                            ORDER BY f.fee_id";
             $consulta = $conexion -> prepare($sentencia);
             $consulta -> execute();
             $resultado = $consulta -> fetchAll(PDO::FETCH_OBJ);

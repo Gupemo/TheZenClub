@@ -5,16 +5,13 @@
  */
 
 // indispensables
-
-require_once '../controllers/controllerInvites.php';
-require_once '../controllers/controllerUsers.php';
-require_once '../controllers/controllerAuth.php';
-require_once '../controllers/controllerFee.php';
-require_once '../../config/debug.php';
-
-// iniciando sesion
-session_start();
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/controllers/controllerInvites.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC//controllers/controllerUsers.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/controllers/controllerPayments.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/controllers/controllerAuth.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/MVC/controllers/controllerFee.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/debug.php';
 
 // invitacion de usuarios
 
@@ -48,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
 
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
 
-        $uploadDir = __DIR__ . "/../assets/users/profilePictures/"; // ruta en tu proyecto
+        $uploadDir = __DIR__ . "/../../assets/users/profilePictures/";
 
         if(!is_dir($uploadDir)){
             mkdir($uploadDir, 0777, true);
@@ -94,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
     $resultado = $controlador->registrarUsuario($userData, $dataContact, $token);
 
     unset($controlador);
+
     if ($resultado) {
         header('Location: ../../views/users/profile.php?registro=ok');
         exit();
@@ -186,4 +184,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['crearCuota'])){
         exit();
     }
 }
+// reenviar invitacion
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reenviarInvitaciones'])) {
+    if (!empty($_POST['enviar'])) {
+        $controller = new ControllerInvites();
+
+        foreach ($_POST['enviar'] as $id) {
+            $controller->reenviarInvitacion($id); 
+        }
+    }
+    header('Location: ../../admin/pages/invites.php?action=listarInvitaciones&reenviar=ok');
+    exit();
+}
+
+
+
 

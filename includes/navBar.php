@@ -4,8 +4,6 @@
  * Menú dinamico segun roles de usuario.
  */
 
-// inicio sesion
-session_start();
 
 // obtener página actual
 

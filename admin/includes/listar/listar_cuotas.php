@@ -7,19 +7,23 @@ $cuotas = $controladorFee->listaCuotas();
 if ($cuotas && count($cuotas) > 0) {
 ?>
 <article>
-    <table class="cuotas">
-        <thead>
-            <tr>
-                <th>Nombre cuota</th>
-                <th>Importe</th>
-                <th colspan="2">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="cuotas">
+    <thead>
+        <tr>
+            <th>Nombre cuota</th>
+            <th>Importe</th>
+            <th>Usuarios asignados</th>
+            <th>Familias asignadas</th>
+            <th colspan="2">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
 <?php foreach ($cuotas as $cuota): ?>
     <tr>
-        <td><?= $cuota->name ?></td>
+        <td><?= htmlspecialchars($cuota->name) ?></td>
         <td><?= $cuota->amount ?> €</td>
+        <td><?= $cuota->total_usuarios ?></td>
+        <td><?= $cuota->total_familias ?></td>
         <td>
             <?php if ($cuota->fee_id != 1): ?>
                 <form action="../../MVC/core/router.php" method="POST">
@@ -36,9 +40,10 @@ if ($cuotas && count($cuotas) > 0) {
         </td>
     </tr>
 <?php endforeach; ?>
+    </tbody>
+</table>
 
-        </tbody>
-    </table>
+
     <hr>
 
     <div class="crearCuota">

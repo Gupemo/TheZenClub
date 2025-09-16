@@ -106,6 +106,25 @@ class Invites{
         }
     }
 
+    public static function obtenerPorId($id) {
+        try {
+            $conexion = Conexion::conn();
+            if (!$conexion) {
+                throw new Exception("No se pudo conectar a la base de datos");
+            }
+            $sentencia = "SELECT * FROM invitations WHERE id = :id LIMIT 1";
+            $consulta = $conexion->prepare($sentencia);
+            $consulta->execute([":id" => $id]);
+            $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+            $consulta->closeCursor();
+            $conexion = null;
+            return $resultado ?: null;
+        } catch (PDOException $e) {
+            error_log("Error al usar obtenerPorId: " . $e->getMessage());
+            return null;
+        }
+    }
+
 
 
 }

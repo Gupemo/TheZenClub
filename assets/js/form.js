@@ -43,7 +43,6 @@ function check(){
     let userName = document.getElementById('userName');
     let userSubname = document.getElementById('userSubname');
     let userbirthDate = document.getElementById('userBirthDate');
-    let userEmail = document.getElementById('userEmail')
     let userPassword = document.getElementById('userPassword');
     let userPhone = document.getElementById('userPhone');
     let userSex = document.getElementById('userSex');
@@ -100,19 +99,6 @@ function check(){
         correct = false;
     }else{
         success(userbirthDate)
-    }
-
-    if(userEmail.value == null || userEmail.value == ''){
-        error(userEmail, "El campo es obligatorio, debes escribir tu email")
-        correct = false;
-    }else{
-        let re_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        if(!re_email.test(userEmail.value)){
-            error(userEmail, "El formato del correo debe ser direccion@correo.dominio");
-            correct = false;
-        }else{
-            success(userEmail);
-        }
     }
     
     if(userPassword.value == null || userPassword.value == ''){
