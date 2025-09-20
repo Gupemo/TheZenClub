@@ -4,7 +4,8 @@
 $current = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 $menuProfesor = [
-    "Inicio" => "/admin/index.php",
+    "Inicio panel" => "/admin/index.php",
+    "Web" => "/index.php",
     "Gestión de Invitaciones" => [
         "Invitar usuarios"      => "/admin/pages/invites.php?action=invitar",
         "Lista de invitaciones" => "/admin/pages/invites.php?action=listarInvitaciones"

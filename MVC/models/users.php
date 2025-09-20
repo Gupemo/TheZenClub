@@ -98,25 +98,87 @@ class Users{
 
 
             // confirmar transacción
+
             $conexion->commit();
             $conexion = null;
 
-            return true;
+            return $userId; // devuelvo el id para iniciar la sesion automatica
 
         } catch (Exception $e) {
             if($conexion && $conexion->inTransaction()){
                 $conexion->rollback();
             }
-            die("Error en registrarUsuario: " . $e->getMessage());
+            error_log("Error en registrarUsuario: " . $e->getMessage());
             return null;
+        }
+    }
 
-    /*         error_log("Error en registrarUsuario: " . $e->getMessage());
-            return null */;
+    
+    // perfiles - devuelve objeto con datos de cada persona (según su id)
+    public static function userProfile($user_id){
+        try {
+            $conexion = Conexion::conn();
+            if(!$conexion){
+                throw new Exception("No se pudo conectar a la base de datos");
+            }
+
+            $sentencia = "SELECT 
+                            u.*,
+                            b.belt_name AS cinturon
+                        FROM users u
+                        LEFT JOIN user_belt ub 
+                            ON u.user_id = ub.user_id AND ub.active = 1
+                        LEFT JOIN belts b 
+                            ON ub.belt_id = b.belt_id
+                        WHERE u.user_id = :idUsuario
+                        LIMIT 1";
+
+            $consulta = $conexion->prepare($sentencia);
+            $consulta->execute([":idUsuario" => $user_id]);
+            $resultado = $consulta->fetch(PDO::FETCH_OBJ);
+
+            $consulta->closeCursor();
+            $conexion = null;
+            return $resultado;
+
+        } catch (PDOException $e) {
+            error_log("Error en userProfile: " . $e->getMessage());
+            return null;
+        }
+    }
+
+// Contactos de emergencia del usuario
+    public static function userContacts($user_id){
+        try {
+            $conexion = Conexion::conn();
+            if(!$conexion){
+                throw new Exception("No se pudo conectar a la base de datos");
+            }
+
+            $sentencia = "SELECT 
+                            ec.*,
+                            ec.contact_name AS nombre,
+                            ec.contact_subname AS apellidos,
+                            ec.contact_phone AS telefono,
+                            ec.relationship AS relacion
+                        FROM emergency_contacts ec
+                        WHERE ec.user_id = :idUsuario";
+
+            $consulta = $conexion->prepare($sentencia);
+            $consulta->execute([":idUsuario" => $user_id]);
+            $resultado = $consulta->fetchAll(PDO::FETCH_OBJ);
+
+            $consulta->closeCursor();
+            $conexion = null;
+            return $resultado;
+
+        } catch (PDOException $e) {
+            error_log("Error en userContacts: " . $e->getMessage());
+            return [];
         }
     }
 
 
-        
-    
+
 
 }

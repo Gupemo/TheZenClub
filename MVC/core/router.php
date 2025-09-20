@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
 
     if (isset($_FILES['profilePicture']) && $_FILES['profilePicture']['error'] === UPLOAD_ERR_OK) {
 
-        $uploadDir = __DIR__ . "/../../assets/users/profilePictures/";
+        $uploadDir = __DIR__ . "/../../public/users/profilePictures/";
 
         if(!is_dir($uploadDir)){
             mkdir($uploadDir, 0777, true);
@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
             $filePath = $uploadDir . $fileName;
             if (move_uploaded_file($_FILES['profilePicture']['tmp_name'], $filePath)) {
                 // ruta para guardar en base de datos.
-                $user_picture = "assets/users/profilePictures/" . $fileName;
+                $user_picture = "/public/users/profilePictures/" . $fileName;
             }
         }
     }
@@ -93,6 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
     unset($controlador);
 
     if ($resultado) {
+        session_regenerate_id(true); // regenero la id para evitar fijación de sesión
+
+        $_SESSION['user_id']   = $resultado;              // ID del usuario
+        $_SESSION['user_name'] = $userData['user_name'];  // nombre del formulario
+        $_SESSION['rol']       = 1;                       // rol por defecto
+
         header('Location: ../../views/users/profile.php?registro=ok');
         exit();
     } else {
@@ -100,6 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['registro'])) {
         exit();
     }
 }
+
+
+
 
 //login
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])){
@@ -196,7 +205,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reenviarInvitaciones']
     header('Location: ../../admin/pages/invites.php?action=listarInvitaciones&reenviar=ok');
     exit();
 }
-
-
-
-

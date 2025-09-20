@@ -226,6 +226,12 @@ h2{
     align-items: center;
 
 }
+.section.profile {
+    width:100%;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+}
 
 /* Formulario de registro */
 .hrform{
@@ -606,5 +612,131 @@ input[type="checkbox"] {
     .footer__container {
         flex-direction: column;
         gap: 25px;
+    }
+}
+
+/* Perfiles */
+/* === Perfil de usuario === */
+.section.profile {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+}
+.section .info{
+    font-weight: bolder;
+    font-size: 1.9rem;
+}
+
+.profile__card {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--blanco);
+    border-radius: var(--borde-radius);
+    box-shadow: var(--sombra);
+    padding: 2rem 3rem;
+}
+
+@media (min-width: 1024px) {
+    .profile__card {
+        width: 80%;
+        max-width: 1200px;
+        padding: 3rem 4rem;
+    }
+}
+
+/* Imagen de perfil */
+.profile__image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: var(--sombra);
+}
+/* Si activo verde si no rojo */
+.profile__image img.activo {
+    box-shadow: 0 0 15px 4px rgba(0, 200, 0, 0.7); /* verde */
+}
+
+.profile__image img.inactivo {
+    box-shadow: 0 0 15px 4px rgba(200, 0, 0, 0.7); /* rojo */
+}
+
+
+/* Imagen del cinturón */
+.profile__belt {
+    margin: 1rem 0 2rem 0;
+}
+.profile__belt img {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transform: translateY(-50px);
+}
+.profile__belt p {
+    margin-top: 0.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--azul);
+}
+
+/* Datos básicos en dos columnas */
+.profile__info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    text-align: left;
+    gap: 2rem;
+}
+.profile__col {
+    flex: 1;
+}
+.profile__col p {
+    margin: 0.5rem 0;
+    font-size: 1.6rem;
+}
+
+/* Contactos de emergencia */
+.profile__contacts {
+    margin-top: 2.5rem;
+    text-align: left;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--grisClaro);
+}
+.profile__contacts h3 {
+    color: var(--azulClaro);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+.profile__contacts ul {
+    list-style: disc;
+    margin-left: 2rem;
+    padding: 0;
+}
+.profile__contacts li {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Responsive: columnas apiladas en móvil */
+@media (max-width: 768px) {
+    .profile__info {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile__col {
+        margin-bottom: 1rem;
+    }
+    .profile__contacts {
+        text-align: center;
+    }
+    .profile__contacts ul {
+        list-style: none;
+        margin-left: 0;
     }
 }
