@@ -53,10 +53,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
                         <label for="email">Email:</label>
                         <input type="email" name="email" id="email">
                     </div>
-                    <div class="camp">
+
+                    <div class="camp password-field">
                         <label for="password">Contraseña:</label>
                         <input type="password" name="password" id="password">
+                        <span class="eye">
+                            <img src="../assets/icons/svg/eye.svg" alt="mostrar password" title="mostrar/ocultar contraseña">
+                        </span>
                     </div>
+                    <div class="camp">
+                        <p class="reset-password">¿Has olvidado tu contraseña?</p>
+                    </div>
+
                     <div class="camp botones">
                         <input type="reset" value="Borrar" class="boton">
                         <input type="submit" name="login" value="Iniciar sesión" class="boton">
@@ -74,5 +82,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/session.php';
         ?>
 </body>
 <script src="/assets/js/hamburguesa.js"></script>
+<script src="/assets/js/eye.js"></script>
 
 </html>

@@ -81,6 +81,10 @@ h2{
     font-weight: 700;
     max-width: 14.5rem;
 }
+.boton:hover{
+    color: red;
+    transform: scale(1.1)
+}
 
 
 /* Header */
@@ -335,6 +339,28 @@ input[type="checkbox"] {
     width: 30rem;
     box-shadow: var(--sombra);
 }
+/* Ojo para mostrar pw */
+.password-field {
+  position: relative; 
+}
+
+.password-field input {
+  padding-right: 35px; 
+}
+
+.password-field .eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(3px);
+  cursor: pointer;
+}
+
+.password-field .eye img {
+  width: 20px;
+  height: 20px;
+}
+
 
 /* Ventana modal terminos y condiciones */
 .modal{

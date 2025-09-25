@@ -1,0 +1,37 @@
+25 / 09 / 2025
+ =>  Agregado boton de mostrar/ocultar contraseña en el login
+
+ 20 / 09 / 2025
+ => Añadidos los perfiles (Por id), cambios para las url de las imágenes de los perfiles y añadido que la sesión se inicie automaticamente al registrarse.
+
+ 16 / 09 / 2025
+ => Varios cambios, instalación de PHPMailer, configuracion de los registros y envio/reenvio de emails, Cambiada la ruta de todos los requires/includes
+
+ 15 / 09 / 2025
+ => Navbar dinamico para el panel con resaltado del menú actual
+
+ 12 / 09 / 2025
+ =>  Añadidos páginas de cuotas pendientes/pagadas y algunos iconos para el panel. Resueltos varios errores tontos
+
+ 11 / 09 / 2025
+ => CRUD cuotas
+
+ 10 / 09 / 2025
+=> Añadidos los registros reestructuracion de los controladores/modelos, creacion de cuotas y reestructuracion de la base de datos
+
+09 / 09 / 2025
+=> Añadidos controladores de auth y users, creado modelos de usuarios e inivtaciones. Ya se comprueban los tokens antes del registros
+
+08 / 09 / 2025
+=> Actualizada estructura y creada la vista de gestión de invitaciones
+
+05 / 09 / 2025
+=> Creacion del panel de control y la sección de invitar usuarios.
+
+03 / 09 / 2025
+=> Varios cambios
+
+04 / 08 / 2025
+=> Actualizaciones varias y arreglos visuales.
+
+ 

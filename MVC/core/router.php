@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['invitarUsuario'])) {
     $email = $_POST['email'];
     // validar email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('Location: ../../admin/pages/users.php?action=invitar&invitar=invalid');
+        header('Location: ../../admin/pages/invites.php?action=invitar&invitar=invalid');
         exit();
     }
 
@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['invitarUsuario'])) {
     unset($controller);
 
     if($resultado) {
-        header('Location: ../../admin/pages/users.php?action=invitar&invitar=ok');
+        header('Location: ../../admin/pages/invites.php?action=invitar&invitar=ok');
         exit();
     }else{
-        header('Location: ../../admin/pages/users.php?action=invitar&invitar=error');
+        header('Location: ../../admin/pages/invites.php?action=invitar&invitar=error');
         exit();
     }
 
